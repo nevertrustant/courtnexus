@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourtNexus - Đặt Sân Thể Thao Thông Minh Hà Nội</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Quicksand', 'Nunito', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #00A9FF 0%, #89CFF3 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #00A9FF, #0088CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 169, 255, 0.2);
+        }
+        
+        .star-rating {
+            color: #fbbf24;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .premium-badge {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00A9FF, #0088CC);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0088CC, #006699);
+            transform: scale(1.05);
+        }
+        
+        .price-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #E0F4FF;
+            outline: none;
+        }
+        
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00A9FF;
+            cursor: pointer;
+        }
+        
+        .price-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00A9FF;
+            cursor: pointer;
+        }
+        
+        .sport-icon {
+            font-size: 2rem;
+            color: #00A9FF;
+        }
+        
+        .logo-glow {
+            filter: drop-shadow(0 0 10px rgba(0, 169, 255, 0.5));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <img src="courtnexus-logo.png" alt="CourtNexus" class="w-12 h-12 logo-glow">
+                    <span class="text-2xl font-bold gradient-text">CourtNexus</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-blue-500 font-medium transition" onclick="showSection('home')">Trang chủ</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-500 font-medium transition" onclick="showSection('search')">Tìm sân</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-500 font-medium transition" onclick="showSection('matchmaking')">Tìm đối thủ</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-500 font-medium transition" onclick="showSection('dating')">Hẹn hò</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-500 font-medium transition" onclick="showSection('premium')">Gói Premium</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block px-4 py-2 text-blue-500 hover:bg-blue-50 rounded-lg transition font-medium">
+                        Đăng nhập
+                    </button>
+                    <button class="px-4 py-2 btn-primary text-white rounded-lg font-semibold">
+                        Đăng ký
+                    </button>
+                    <button class="md:hidden text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home-section" class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mb-8 floating">
+                    <img src="courtnexus-logo.png" alt="CourtNexus Logo" class="w-24 h-24 mx-auto logo-glow">
+                </div>
+                <h1 class="text-5xl font-bold mb-6">Kết nối mọi sân thể thao tại Hà Nội</h1>
+                <p class="text-xl mb-8 opacity-90">Đặt sân dễ dàng, tìm đối thủ nhanh chóng, kết nối cộng đồng yêu thể thao</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showSection('search')" class="px-8 py-4 bg-white text-blue-500 rounded-lg font-semibold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-search mr-2"></i> Tìm sân ngay
+                    </button>
+                    <button onclick="showSection('matchmaking')" class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-users mr-2"></i> Tìm đối thủ
+                    </button>
+                </div>
+                
+                <!-- Popular Sports -->
+                <div class="mt-16 grid grid-cols-3 md:grid-cols-6 gap-6">
+                    <div class="text-center">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-futbol text-3xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Bóng đá</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-basketball-ball text-3xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Bóng rổ</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-table-tennis text-3xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Pickleball</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-volleyball-ball text-3xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Cầu lông</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-baseball-ball text-3xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Bóng chày</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-tennis-ball text-3xl"></i>
+                        </div>
+                        <p class="text-sm font-medium">Tennis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section with Smart Filters -->
+    <section id="search-section" class="py-16 bg-gray-50" style="display:none;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                <i class="fas fa-search text-blue-500 mr-3"></i><span class="gradient-text">Tìm Sân Thông Minh</span>
+            </h2>
+            
+            <!-- Filters -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8 border-2 border-blue-100">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Location -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-700">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-1"></i> Quận/Huyện
+                        </label>
+                        <select id="location-filter" class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                            <option>Tất cả</option>
+                            <option>Ba Đình</option>
+                            <option>Hoàn Kiếm</option>
+                            <option>Đống Đa</option>
+                            <option>Hai Bà Trưng</option>
+                            <option>Cầu Giấy</option>
+                            <option>Tây Hồ</option>
+                            <option>Thanh Xuân</option>
+                            <option>Long Biên</option>
+                            <option>Nam Từ Liêm</option>
+                            <option>Bắc Từ Liêm</option>
+                            <option>Hà Đông</option>
+                            <option>Hoàng Mai</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Sport Type -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-700">
+                            <i class="fas fa-futbol text-blue-500 mr-1"></i> Loại sân
+                        </label>
+                        <select id="sport-filter" class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                            <option>Tất cả</option>
+                            <option>Bóng đá</option>
+                            <option>Bóng rổ</option>
+                            <option>Tennis</option>
+                            <option>Cầu lông</option>
+                            <option>Pickleball</option>
+                            <option>Bóng chày</option>
+                            <option>Bơi lội</option>
+                            <option>Bóng bàn</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Date -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-700">
+                            <i class="fas fa-calendar text-blue-500 mr-1"></i> Ngày
+                        </label>
+                        <input type="date" id="date-filter" class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                    </div>
+                    
+                    <!-- Time -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-700">
+                            <i class="fas fa-clock text-blue-500 mr-1"></i> Giờ
+                        </label>
+                        <select id="time-filter" class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                            <option>Tất cả</option>
+                            <option>Sáng (6h-12h)</option>
+                            <option>Chiều (12h-18h)</option>
+                            <option>Tối (18h-23h)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Advanced Filters -->
+                <div class="mt-6 pt-6 border-t-2 border-gray-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Price Range -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-700">
+                                <i class="fas fa-dollar-sign text-blue-500 mr-1"></i> Khoảng giá: <span id="price-display" class="text-blue-500">100k - 500k</span>
+                            </label>
+                            <div class="flex items-center space-x-4">
+                                <input type="range" id="price-min" min="50" max="1000" value="100" step="50" class="price-slider flex-1" oninput="updatePrice()">
+                                <input type="range" id="price-max" min="50" max="1000" value="500" step="50" class="price-slider flex-1" oninput="updatePrice()">
+                            </div>
+                        </div>
+                        
+                        <!-- Distance -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-700">
+                                <i class="fas fa-route text-blue-500 mr-1"></i> Khoảng cách: <span id="distance-display" class="text-blue-500">5 km</span>
+                            </label>
+                            <input type="range" id="distance-filter" min="1" max="20" value="5" class="price-slider w-full" oninput="document.getElementById('distance-display').textContent = this.value + ' km'">
+                        </div>
+                    </div>
+                    
+                    <!-- Amenities -->
+                    <div class="mt-6">
+                        <label class="block text-sm font-semibold mb-3 text-gray-700">
+                            <i class="fas fa-star text-blue-500 mr-1"></i> Tiện ích
+                        </label>
+                        <div class="flex flex-wrap gap-3">
+                            <label class="flex items-center space-x-2 cursor-pointer bg-blue-50 px-3 py-2 rounded-lg hover:bg-blue-100 transition">
+                                <input type="checkbox" class="amenity-checkbox w-5 h-5 text-blue-500 rounded focus:ring-blue-400">
+                                <span class="text-sm font-medium">Có nước uống</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer bg-blue-50 px-3 py-2 rounded-lg hover:bg-blue-100 transition">
+                                <input type="checkbox" class="amenity-checkbox w-5 h-5 text-blue-500 rounded focus:ring-blue-400">
+                                <span class="text-sm font-medium">Có mái che</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer bg-blue-50 px-3 py-2 rounded-lg hover:bg-blue-100 transition">
+                                <input type="checkbox" class="amenity-checkbox w-5 h-5 text-blue-500 rounded focus:ring-blue-400">
+                                <span class="text-sm font-medium">Phòng thay đồ</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer bg-blue-50 px-3 py-2 rounded-lg hover:bg-blue-100 transition">
+                                <input type="checkbox" class="amenity-checkbox w-5 h-5 text-blue-500 rounded focus:ring-blue-400">
+                                <span class="text-sm font-medium">Bãi đỗ xe</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer bg-blue-50 px-3 py-2 rounded-lg hover:bg-blue-100 transition">
+                                <input type="checkbox" class="amenity-checkbox w-5 h-5 text-blue-500 rounded focus:ring-blue-400">
+                                <span class="text-sm font-medium">Wifi miễn phí</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="filterCourts()" class="mt-6 w-full md:w-auto px-8 py-3 btn-primary text-white rounded-lg font-semibold shadow-lg">
+                    <i class="fas fa-filter mr-2"></i> Áp dụng bộ lọc
+                </button>
+            </div>
+            
+            <!-- Court Cards -->
+            <div id="courts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Court cards will be generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Matchmaking Section -->
+    <section id="matchmaking-section" class="py-16 bg-white" style="display:none;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">
+                <i class="fas fa-users text-blue-500 mr-3"></i><span class="gradient-text">Tìm Đối Thủ</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Kết nối với những người chơi cùng trình độ và đam mê tại Hà Nội</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Matchmaking Form -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl shadow-lg p-8 mb-8 border-2 border-blue-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-700">Môn thể thao</label>
+                            <select class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400">
+                                <option>Bóng đá</option>
+                                <option>Bóng rổ</option>
+                                <option>Tennis</option>
+                                <option>Cầu lông</option>
+                                <option>Pickleball</option>
+                                <option>Bóng chày</option>
+                                <option>Bơi lội</option>
+                                <option>Bóng bàn</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-700">Trình độ</label>
+                            <select class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400">
+                                <option>Mới bắt đầu</option>
+                                <option>Trung bình</option>
+                                <option>Khá</option>
+                                <option>Giỏi</option>
+                                <option>Chuyên nghiệp</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-700">Khu vực</label>
+                            <select class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400">
+                                <option>Ba Đình</option>
+                                <option>Hoàn Kiếm</option>
+                                <option>Đống Đa</option>
+                                <option>Hai Bà Trưng</option>
+                                <option>Cầu Giấy</option>
+                                <option>Tây Hồ</option>
+                                <option>Thanh Xuân</option>
+                                <option>Long Biên</option>
+                                <option>Nam Từ Liêm</option>
+                                <option>Bắc Từ Liêm</option>
+                                <option>Hà Đông</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-700">Thời gian</label>
+                            <select class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400">
+                                <option>Sáng</option>
+                                <option>Chiều</option>
+                                <option>Tối</option>
+                                <option>Cuối tuần</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="findMatches()" class="mt-6 w-full py-3 btn-primary text-white rounded-lg font-semibold shadow-lg">
+                        <i class="fas fa-search mr-2"></i> Tìm đối thủ ngay
+                    </button>
+                </div>
+                
+                <!-- Match Results -->
+                <div id="matches-container" class="space-y-4">
+                    <!-- Match cards will be generated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dating Section -->
+    <section id="dating-section" class="py-16 bg-gray-50" style="display:none;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">
+                <i class="fas fa-heart text-pink-500 mr-3"></i><span class="gradient-text">Hẹn Hò Thể Thao</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Tìm người cùng sở thích để vừa chơi thể thao vừa kết nối ở Hà Nội</p>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="dating-container">
+                    <!-- Dating profiles will be generated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Section -->
+    <section id="premium-section" class="py-16 gradient-bg text-white" style="display:none;">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">
+                    <i class="fas fa-crown text-yellow-300 mr-3"></i>Gói Premium CourtNexus
+                </h2>
+                <p class="text-xl opacity-90">Nâng cấp trải nghiệm của bạn lên tầm cao mới!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-white text-gray-800 rounded-xl p-8 shadow-xl transform hover:scale-105 transition">
+                    <h3 class="text-2xl font-bold mb-2 text-blue-500">Miễn phí</h3>
+                    <div class="text-4xl font-bold mb-6">0đ<span class="text-lg text-gray-500">/tháng</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Đặt sân không giới hạn</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 5 lượt matchmaking/tháng</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Xem đánh giá sân</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-times mr-2"></i> Có quảng cáo</li>
+                    </ul>
+                    <button class="w-full py-3 border-2 border-blue-500 text-blue-500 rounded-lg font-semibold hover:bg-blue-50 transition">
+                        Gói hiện tại
+                    </button>
+                </div>
+                
+                <!-- All-Star Plan -->
+                <div class="bg-white text-gray-800 rounded-xl p-8 shadow-xl transform scale-105 border-4 border-yellow-400">
+                    <div class="premium-badge text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">PHỔ BIẾN</div>
+                    <h3 class="text-2xl font-bold mb-2 text-blue-500">All-Star</h3>
+                    <div class="text-4xl font-bold mb-6">36,000đ<span class="text-lg text-gray-500">/tháng</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Tất cả tính năng Miễn phí</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <strong>Matchmaking không giới hạn</strong></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <strong>Giảm 10% tiền sân đối tác</strong></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Huy hiệu All-Star</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Ưu đãi hàng tháng</li>
+                    </ul>
+                    <button class="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition transform hover:scale-105 shadow-lg">
+                        Nâng cấp ngay
+                    </button>
+                </div>
+                
+                <!-- MVP Plan -->
+                <div class="bg-white text-gray-800 rounded-xl p-8 shadow-xl transform hover:scale-105 transition">
+                    <div class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">TỐT NHẤT</div>
+                    <h3 class="text-2xl font-bold mb-2 text-blue-500">MVP</h3>
+                    <div class="text-4xl font-bold mb-6">67,000đ<span class="text-lg text-gray-500">/tháng</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Tất cả tính năng All-Star</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <strong>Truy cập Dating Profile</strong></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <strong>Đặt sân ưu tiên (sớm 24h)</strong></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <strong>Bảo hiểm "Không mưa"</strong></li>
+                        <li class="flex items-center text-sm text-gray-600"><span class="ml-6">→ Đổi lịch miễn phí khi mưa</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Hỗ trợ ưu tiên 24/7</li>
+                    </ul>
+                    <button class="w-full py-3 btn-primary text-white rounded-lg font-semibold shadow-lg">
+                        Chọn gói MVP
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Tại sao chọn CourtNexus?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-blue-50 rounded-xl hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-3xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tìm kiếm thông minh</h3>
+                    <p class="text-gray-600">Bộ lọc thông minh giúp bạn tìm sân phù hợp với ngân sách, vị trí và sở thích</p>
+                </div>
+                <div class="text-center p-6 bg-cyan-50 rounded-xl hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-3xl text-cyan-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Kết nối cộng đồng</h3>
+                    <p class="text-gray-600">Matchmaking và hẹn hò giúp bạn tìm đối thủ và bạn mới yêu thể thao</p>
+                </div>
+                <div class="text-center p-6 bg-green-50 rounded-xl hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-3xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Đánh giá minh bạch</h3>
+                    <p class="text-gray-600">Hệ thống đánh giá từ người dùng thực giúp bạn chọn sân tốt nhất</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="courtnexus-logo.png" alt="CourtNexus" class="w-10 h-10">
+                        <span class="text-xl font-bold">CourtNexus</span>
+                    </div>
+                    <p class="text-gray-400">Nền tảng đặt sân thể thao thông minh số 1 tại Hà Nội</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Về chúng tôi</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Giới thiệu</a></li>
+                        <li><a href="#" class="hover:text-white transition">Đối tác</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Hỗ trợ</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Trung tâm trợ giúp</a></li>
+                        <li><a href="#" class="hover:text-white transition">Chính sách</a></li>
+                        <li><a href="#" class="hover:text-white transition">Điều khoản</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Liên hệ</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i> support@courtnexus.vn</li>
+                        <li><i class="fas fa-phone mr-2"></i> 1900 xxxx</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Hà Nội, Việt Nam</li>
+                        <li class="flex space-x-4 pt-2">
+                            <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400 transition"><i class="fab fa-youtube"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 CourtNexus. Mọi quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Court Detail Modal -->
+    <div id="court-modal" class="modal">
+        <div class="bg-white rounded-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // Sample court data for Hanoi
+        const courtsData = [
+            {
+                id: 1,
+                name: "Sân Bóng Đá Mini The Arena",
+                type: "Bóng đá",
+                location: "Đống Đa",
+                distance: 2.5,
+                price: 200,
+                rating: 4.8,
+                reviews: 156,
+                amenities: ["Có nước uống", "Có mái che", "Phòng thay đồ", "Bãi đỗ xe"],
+                image: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=400",
+                reviewsList: [
+                    { user: "Nguyễn Văn A", rating: 5, comment: "Sân rất đẹp, tiện ích đầy đủ!", date: "10/02/2026" },
+                    { user: "Trần Thị B", rating: 4, comment: "Giá hợp lý, sân sạch sẽ", date: "08/02/2026" }
+                ]
+            },
+            {
+                id: 2,
+                name: "Sân Tennis Hoàng Cầu",
+                type: "Tennis",
+                location: "Ba Đình",
+                distance: 3.2,
+                price: 150,
+                rating: 4.5,
+                reviews: 89,
+                amenities: ["Có nước uống", "Wifi miễn phí", "Bãi đỗ xe"],
+                image: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400",
+                reviewsList: [
+                    { user: "Lê Văn C", rating: 5, comment: "Sân tennis chất lượng cao, HLV tận tâm", date: "09/02/2026" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Sân Cầu Lông Cầu Giấy",
+                type: "Cầu lông",
+                location: "Cầu Giấy",
+                distance: 4.0,
+                price: 80,
+                rating: 4.7,
+                reviews: 234,
+                amenities: ["Có mái che", "Phòng thay đồ", "Wifi miễn phí"],
+                image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400",
+                reviewsList: [
+                    { user: "Phạm Thị D", rating: 5, comment: "Sân đẹp, giá rẻ, gần nhà", date: "07/02/2026" },
+                    { user: "Hoàng Văn E", rating: 4, comment: "Rất phù hợp cho người mới bắt đầu", date: "05/02/2026" }
+                ]
+            },
+            {
+                id: 4,
+                name: "Sân Bóng Rổ Thanh Xuân",
+                type: "Bóng rổ",
+                location: "Thanh Xuân",
+                distance: 5.5,
+                price: 120,
+                rating: 4.6,
+                reviews: 167,
+                amenities: ["Có nước uống", "Phòng thay đồ", "Bãi đỗ xe"],
+                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400",
+                reviewsList: [
+                    { user: "Đỗ Văn F", rating: 5, comment: "Sân bóng rổ chuẩn quốc tế!", date: "06/02/2026" }
+                ]
+            },
+            {
+                id: 5,
+                name: "Sân Pickleball Hồ Tây",
+                type: "Pickleball",
+                location: "Tây Hồ",
+                distance: 6.0,
+                price: 100,
+                rating: 4.9,
+                reviews: 312,
+                amenities: ["Có nước uống", "Có mái che", "Phòng thay đồ", "Bãi đỗ xe", "Wifi miễn phí"],
+                image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400",
+                reviewsList: [
+                    { user: "Vũ Thị G", rating: 5, comment: "Sân pickleball đẹp nhất Hà Nội!", date: "09/02/2026" },
+                    { user: "Bùi Văn H", rating: 5, comment: "Không gian thoáng mát, view hồ đẹp", date: "08/02/2026" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Sân Bóng Chày Hà Đông",
+                type: "Bóng chày",
+                location: "Hà Đông",
+                distance: 8.0,
+                price: 180,
+                rating: 4.4,
+                reviews: 98,
+                amenities: ["Có nước uống", "Bãi đỗ xe", "Wifi miễn phí"],
+                image: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400",
+                reviewsList: [
+                    { user: "Ngô Văn I", rating: 4, comment: "Sân bóng chày hiếm có ở Hà Nội", date: "04/02/2026" }
+                ]
+            }
+        ];
+
+        // Sample matchmaking data
+        const matchesData = [
+            {
+                id: 1,
+                name: "Nguyễn Minh Tuấn",
+                age: 28,
+                sport: "Bóng đá",
+                level: "Trung bình",
+                location: "Đống Đa",
+                bio: "Đam mê bóng đá, thích chơi vị trí tiền đạo, tìm đội bóng thường xuyên",
+                rating: 4.5,
+                matches: 45,
+                avatar: "https://i.pravatar.cc/150?img=12"
+            },
+            {
+                id: 2,
+                name: "Trần Hương Lan",
+                age: 25,
+                sport: "Tennis",
+                level: "Khá",
+                location: "Ba Đình",
+                bio: "Chơi tennis 5 năm, tìm bạn cùng trình độ để luyện tập cuối tuần",
+                rating: 4.8,
+                matches: 78,
+                avatar: "https://i.pravatar.cc/150?img=45"
+            },
+            {
+                id: 3,
+                name: "Lê Đức Anh",
+                age: 30,
+                sport: "Bóng rổ",
+                level: "Chuyên nghiệp",
+                location: "Thanh Xuân",
+                bio: "Từng chơi bóng rổ chuyên nghiệp, sẵn sàng hướng dẫn người mới",
+                rating: 5.0,
+                matches: 120,
+                avatar: "https://i.pravatar.cc/150?img=33"
+            },
+            {
+                id: 4,
+                name: "Phạm Quốc Huy",
+                age: 26,
+                sport: "Pickleball",
+                level: "Trung bình",
+                location: "Cầu Giấy",
+                bio: "Mới chơi pickleball được 6 tháng, muốn tìm bạn cùng luyện tập",
+                rating: 4.3,
+                matches: 32,
+                avatar: "https://i.pravatar.cc/150?img=52"
+            }
+        ];
+
+        // Sample dating profiles
+        const datingProfiles = [
+            {
+                id: 1,
+                name: "Hà Thu",
+                age: 26,
+                sport: "Yoga & Tennis",
+                location: "Cầu Giấy",
+                bio: "Yêu thích thể thao và du lịch. Tìm người cùng sở thích để cùng khám phá Hà Nội!",
+                interests: ["Yoga", "Tennis", "Chạy bộ"],
+                avatar: "https://i.pravatar.cc/150?img=47"
+            },
+            {
+                id: 2,
+                name: "Hoàng Minh",
+                age: 29,
+                sport: "Bóng đá & Bơi lội",
+                location: "Ba Đình",
+                bio: "Thích chơi bóng đá cuối tuần và bơi lội. Tìm bạn cùng đam mê thể thao!",
+                interests: ["Bóng đá", "Bơi lội", "Gym"],
+                avatar: "https://i.pravatar.cc/150?img=15"
+            },
+            {
+                id: 3,
+                name: "Linh Chi",
+                age: 24,
+                sport: "Cầu lông & Pickleball",
+                location: "Đống Đa",
+                bio: "Mới bắt đầu với pickleball, muốn tìm người cùng học hỏi 😊",
+                interests: ["Cầu lông", "Pickleball", "Chạy bộ"],
+                avatar: "https://i.pravatar.cc/150?img=48"
+            },
+            {
+                id: 4,
+                name: "Tuấn Anh",
+                age: 31,
+                sport: "Tennis & Golf",
+                location: "Tây Hồ",
+                bio: "Chơi tennis 10 năm, đang học golf. Tìm bạn cùng đam mê tại Hà Nội!",
+                interests: ["Tennis", "Golf", "Du lịch"],
+                avatar: "https://i.pravatar.cc/150?img=51"
+            },
+            {
+                id: 5,
+                name: "Mai Anh",
+                age: 27,
+                sport: "Bóng rổ & Yoga",
+                location: "Thanh Xuân",
+                bio: "Cân bằng giữa năng lượng và thư giãn. Cùng chơi thể thao nhé!",
+                interests: ["Bóng rổ", "Yoga", "Meditation"],
+                avatar: "https://i.pravatar.cc/150?img=44"
+            },
+            {
+                id: 6,
+                name: "Đức Trung",
+                age: 28,
+                sport: "Bóng đá & Gym",
+                location: "Hà Đông",
+                bio: "Fitness enthusiast, thích chơi bóng với bạn bè mỗi tối",
+                interests: ["Bóng đá", "Gym", "Boxing"],
+                avatar: "https://i.pravatar.cc/150?img=68"
+            }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCourts(courtsData);
+            setTodayDate();
+        });
+
+        function setTodayDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date-filter').value = today;
+        }
+
+        function showSection(section) {
+            // Hide all sections
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('search-section').style.display = 'none';
+            document.getElementById('matchmaking-section').style.display = 'none';
+            document.getElementById('dating-section').style.display = 'none';
+            document.getElementById('premium-section').style.display = 'none';
+            
+            // Show selected section
+            if (section === 'home') {
+                document.getElementById('home-section').style.display = 'block';
+            } else if (section === 'search') {
+                document.getElementById('search-section').style.display = 'block';
+                renderCourts(courtsData);
+            } else if (section === 'matchmaking') {
+                document.getElementById('matchmaking-section').style.display = 'block';
+            } else if (section === 'dating') {
+                document.getElementById('dating-section').style.display = 'block';
+                renderDatingProfiles();
+            } else if (section === 'premium') {
+                document.getElementById('premium-section').style.display = 'block';
+            }
+            
+            // Scroll to top
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function updatePrice() {
+            const minPrice = document.getElementById('price-min').value;
+            const maxPrice = document.getElementById('price-max').value;
+            document.getElementById('price-display').textContent = `${minPrice}k - ${maxPrice}k`;
+        }
+
+        function filterCourts() {
+            const location = document.getElementById('location-filter').value;
+            const sport = document.getElementById('sport-filter').value;
+            const minPrice = parseInt(document.getElementById('price-min').value);
+            const maxPrice = parseInt(document.getElementById('price-max').value);
+            const maxDistance = parseFloat(document.getElementById('distance-filter').value);
+            
+            const amenities = [];
+            document.querySelectorAll('.amenity-checkbox:checked').forEach(cb => {
+                amenities.push(cb.nextElementSibling.textContent.trim());
+            });
+            
+            let filtered = courtsData.filter(court => {
+                if (location !== 'Tất cả' && court.location !== location) return false;
+                if (sport !== 'Tất cả' && court.type !== sport) return false;
+                if (court.price < minPrice || court.price > maxPrice) return false;
+                if (court.distance > maxDistance) return false;
+                
+                if (amenities.length > 0) {
+                    const hasAllAmenities = amenities.every(amenity => 
+                        court.amenities.includes(amenity)
+                    );
+                    if (!hasAllAmenities) return false;
+                }
+                
+                return true;
+            });
+            
+            renderCourts(filtered);
+        }
+
+        function renderCourts(courts) {
+            const container = document.getElementById('courts-container');
+            
+            if (courts.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500"><i class="fas fa-search text-5xl mb-4"></i><p class="text-xl">Không tìm thấy sân phù hợp</p></div>';
+                return;
+            }
+            
+            container.innerHTML = courts.map(court => `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover cursor-pointer border-2 border-blue-50" onclick="openCourtDetail(${court.id})">
+                    <div class="relative">
+                        <img src="${court.image}" alt="${court.name}" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full shadow-lg">
+                            <span class="text-blue-500 font-bold">${court.price}k/h</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${court.name}</h3>
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                            ${court.location} • ${court.distance} km
+                        </div>
+                        <div class="flex items-center mb-3">
+                            <div class="flex items-center star-rating mr-2">
+                                ${generateStars(court.rating)}
+                            </div>
+                            <span class="text-sm font-semibold">${court.rating}</span>
+                            <span class="text-sm text-gray-500 ml-2">(${court.reviews} đánh giá)</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${court.amenities.slice(0, 3).map(amenity => 
+                                `<span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">${amenity}</span>`
+                            ).join('')}
+                            ${court.amenities.length > 3 ? `<span class="text-xs text-gray-500">+${court.amenities.length - 3}</span>` : ''}
+                        </div>
+                        <button class="w-full py-2 btn-primary text-white rounded-lg font-semibold shadow-md">
+                            Đặt sân ngay
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - 0.5 <= rating) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        function openCourtDetail(courtId) {
+            const court = courtsData.find(c => c.id === courtId);
+            const modal = document.getElementById('court-modal');
+            const content = document.getElementById('modal-content');
+            
+            content.innerHTML = `
+                <div class="relative">
+                    <img src="${court.image}" alt="${court.name}" class="w-full h-64 object-cover">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-3xl font-bold mb-4 gradient-text">${court.name}</h2>
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center star-rating mr-2">
+                            ${generateStars(court.rating)}
+                        </div>
+                        <span class="text-lg font-semibold">${court.rating}</span>
+                        <span class="text-gray-500 ml-2">(${court.reviews} đánh giá)</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-3 text-xl"></i>
+                            <div>
+                                <div class="text-sm text-gray-500">Vị trí</div>
+                                <div class="font-semibold">${court.location} (${court.distance} km)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-dollar-sign text-blue-500 mr-3 text-xl"></i>
+                            <div>
+                                <div class="text-sm text-gray-500">Giá thuê</div>
+                                <div class="font-semibold">${court.price},000đ/giờ</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="font-bold text-lg mb-3">Tiện ích</h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${court.amenities.map(amenity => 
+                                `<span class="bg-blue-50 text-blue-600 px-3 py-2 rounded-lg flex items-center font-medium">
+                                    <i class="fas fa-check-circle mr-2"></i>${amenity}
+                                </span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="font-bold text-lg mb-4">Đánh giá từ khách hàng</h3>
+                        <div class="space-y-4">
+                            ${court.reviewsList.map(review => `
+                                <div class="border-b border-gray-200 pb-4">
+                                    <div class="flex items-center mb-2">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                            <i class="fas fa-user text-blue-500"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">${review.user}</div>
+                                            <div class="text-sm text-gray-500">${review.date}</div>
+                                        </div>
+                                        <div class="ml-auto flex items-center star-rating text-sm">
+                                            ${generateStars(review.rating)}
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 ml-13">${review.comment}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <button class="w-full py-4 btn-primary text-white rounded-lg font-semibold text-lg shadow-lg">
+                        <i class="fas fa-calendar-check mr-2"></i> Đặt sân ngay
+                    </button>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('court-modal').classList.remove('active');
+        }
+
+        function findMatches() {
+            const container = document.getElementById('matches-container');
+            container.innerHTML = matchesData.map(match => `
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-2 border-blue-50">
+                    <div class="flex items-start">
+                        <img src="${match.avatar}" alt="${match.name}" class="w-20 h-20 rounded-full mr-4 border-2 border-blue-200">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">${match.name}, ${match.age}</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                    <span class="font-semibold">${match.rating}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600 mb-2">
+                                <i class="fas fa-futbol mr-2 text-blue-500"></i> ${match.sport}
+                                <span class="mx-2">•</span>
+                                <i class="fas fa-signal mr-2 text-blue-500"></i> ${match.level}
+                                <span class="mx-2">•</span>
+                                <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i> ${match.location}
+                            </div>
+                            <p class="text-gray-700 mb-3">${match.bio}</p>
+                            <div class="flex items-center text-sm text-gray-500 mb-4">
+                                <i class="fas fa-trophy mr-2"></i> ${match.matches} trận đã chơi
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="flex-1 py-2 btn-primary text-white rounded-lg font-semibold shadow-md">
+                                    <i class="fas fa-handshake mr-2"></i> Kết nối
+                                </button>
+                                <button class="px-4 py-2 border-2 border-blue-500 text-blue-500 rounded-lg font-semibold hover:bg-blue-50 transition">
+                                    <i class="fas fa-user mr-2"></i> Xem profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderDatingProfiles() {
+            const container = document.getElementById('dating-container');
+            container.innerHTML = datingProfiles.map(profile => `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border-2 border-blue-50">
+                    <div class="relative">
+                        <img src="${profile.avatar}" alt="${profile.name}" class="w-full h-64 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-white">
+                            <h3 class="text-xl font-bold">${profile.name}, ${profile.age}</h3>
+                            <p class="text-sm opacity-90"><i class="fas fa-map-marker-alt mr-1"></i> ${profile.location}</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-3">${profile.bio}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${profile.interests.map(interest => 
+                                `<span class="text-xs bg-pink-50 text-pink-600 px-2 py-1 rounded-full font-medium">${interest}</span>`
+                            ).join('')}
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-lg font-semibold hover:opacity-90 transition shadow-md">
+                                <i class="fas fa-heart mr-2"></i> Thích
+                            </button>
+                            <button class="px-4 py-2 border-2 border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition">
+                                <i class="fas fa-comment mr-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('court-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
